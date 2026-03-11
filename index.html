@@ -92,6 +92,8 @@
     white-space: pre;
     display: inline-block;
     text-shadow: 0 0 20px var(--accent-glow), 0 0 40px rgba(91,154,255,0.05);
+    max-width: 100%;
+    overflow-x: auto;
   }
 
   .tagline {
@@ -369,10 +371,18 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
-    .ascii-art { font-size: 7.5px; }
+    .ascii-art { font-size: 7.5px; letter-spacing: 0px; }
     .container { padding: 0 16px; }
     nav a { margin: 0 8px; font-size: 12px; }
     .contact-grid { grid-template-columns: 1fr; }
+    h2 { font-size: 14px; }
+  }
+
+  @media (max-width: 400px) {
+    .ascii-art { font-size: 5.5px; }
+    nav a { margin: 0 5px; font-size: 11px; }
+    .tagline { font-size: 10px; letter-spacing: 2px; }
+    .notice { font-size: 11px; }
   }
 </style>
 </head>
@@ -413,14 +423,11 @@
         <span class="status-dot"></span>
         Available
       </div>
-      <!-- <p> -->
+      <p>
         o7 - I'm Heliaxx, a developer with focus on open source tools and projects as well as indie games.
         My main interests are space environments, random level generation and AI behavior.
         Hope you'll find something you like here!
-      <!-- </p> -->
-      <!-- <p>
-        
-      </p> -->
+      </p>
     </section>
 
     <!-- PROJECTS -->
