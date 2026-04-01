@@ -378,6 +378,10 @@
     h2 { font-size: 14px; }
   }
 
+  #ignition-card.hover-left .ignition-github .arrow { transform: translateX(4px); }
+  #ignition-card.hover-right .ignition-itch .arrow { transform: translateX(4px); }
+  a:hover > .project-card .project-link .arrow { transform: translateX(4px); }
+
   @media (max-width: 400px) {
     .ascii-art { font-size: 5.5px; }
     nav a { margin: 0 5px; font-size: 11px; }
@@ -437,28 +441,28 @@
 
       <div class="project-grid">
 
-        <a href="https://heliaxx.itch.io/ignition" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
-          <div class="project-card">
-            <div class="project-title">Ignition</div>
-            <div class="project-meta">
-              <span class="tag">Godot 4.4</span>
-              <span class="tag">C#</span>
-              <span class="tag">Space Sim</span>
-              <span class="tag">Concept</span>
-            </div>
-            <p class="project-desc">
-              A 3D space simulation game concept. Fly, fight and race through fully procedural levels.
-              Enjoy the fully fleshed out flight model with 6 degrees of freedom and improve your skills in various modes.
-              Currently in development.
-            </p>
-            <span class="project-link" style="color: var(--orange);">
-            ⧫ Work in progress
-            </span>
-            <span class="project-link">
-              View on itch.io <span class="arrow">→</span>
-            </span>
+        <div id="ignition-card" class="project-card" style="position:relative;">
+          <div class="project-title">Ignition</div>
+          <div class="project-meta">
+            <span class="tag">Godot 4.4</span>
+            <span class="tag">C#</span>
+            <span class="tag">Space Sim</span>
+            <span class="tag">Pre-Alpha</span>
           </div>
-        </a>
+          <p class="project-desc">
+            A 3D space simulation game. Fly, fight and race within fully procedural levels.
+            Enjoy the fully fleshed out flight model with 6 degrees of freedom and improve your skills in various modes.
+            Currently in development.
+          </p>
+          <span class="project-link" style="color: var(--orange);">⧫ Work in progress</span>
+          <div style="display:flex; margin-top:8px;">
+            <span class="project-link ignition-github" style="flex:1; justify-content:center;">View on GitHub <span class="arrow">→</span></span>
+            <span style="color:var(--rule); align-self:center;">|</span>
+            <span class="project-link ignition-itch" style="flex:1; justify-content:center;">View on Itch.io <span class="arrow">→</span></span>
+          </div>
+          <a href="https://github.com/heliaxx/Ignition" target="_blank" rel="noopener" style="position:absolute;top:0;left:0;width:50%;height:100%;z-index:1;"></a>
+          <a href="https://heliaxx.itch.io/ignition" target="_blank" rel="noopener" style="position:absolute;top:0;right:0;width:50%;height:100%;z-index:1;"></a>
+        </div>
 
         <a href="https://github.com/heliaxx/cqc_monitor" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
           <div class="project-card">
@@ -516,6 +520,16 @@
 </div>
 
 <script>
+  const ignitionCard = document.getElementById('ignition-card');
+  ignitionCard.addEventListener('mousemove', function(e) {
+    const half = e.clientX - this.getBoundingClientRect().left < this.getBoundingClientRect().width / 2;
+    this.classList.toggle('hover-left', half);
+    this.classList.toggle('hover-right', !half);
+  });
+  ignitionCard.addEventListener('mouseleave', function() {
+    this.classList.remove('hover-left', 'hover-right');
+  });
+
   document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
